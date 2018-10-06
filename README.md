@@ -9,6 +9,7 @@
 - 不定时同步[NimaQu](https://github.com/NimaQu/ss-panel-v3-mod_Uim)库
 - 我的站点[云](http://yun.9in.info)
 - 我的博客[CHEN](http://9in.info)
+
 ### 本次更新
 - 免签约微信支付程序自检测 根据COOKIE
 - 支付宝判断完善
@@ -17,7 +18,10 @@
 - 每分钟更改为5次的检测（测试不会被ban）
 - 完善检测失效机制
 - 添加手动开启支付开关（检测机制有可能在cookie失效情况下会直接关掉）
-- 添加固定金额支付模式（也可手动输入支付模式【未测试】）
+- 添加固定金额支付模式（也可手动输入支付模式）
+- 改用依赖的形式（以后核心更新只需要```composer update chen-see/chen-pay```）
+- 运行方式的改变不再使用定时任务（更稳定）
+- 同步支付内核更新
 
 ### 相关截图
 <img src="http://ww1.sinaimg.cn/large/006v0omggy1fvgz36p0ckj30u02kck43.jpg" width="300"/>
