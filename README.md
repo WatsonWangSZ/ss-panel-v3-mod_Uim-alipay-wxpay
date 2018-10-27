@@ -25,6 +25,8 @@
 - 更新支付宝双接口轮流切换API达到支付宝防止频繁访问阻止机制
 - 如果单一接口出现阻止则会持续使用另外接口
 - 更新日志保存地址为/storage/logs/chenpay.log
+- 有订单情况下才是10秒一次的频率 杜绝支付宝风控
+- 无订单情况下2分钟一次
 
 ### 相关截图
 <img src="http://ww1.sinaimg.cn/large/006v0omggy1fvgz36p0ckj30u02kck43.jpg" width="300"/>
