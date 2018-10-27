@@ -9,6 +9,7 @@
 - 不定时同步[NimaQu](https://github.com/NimaQu/ss-panel-v3-mod_Uim)库
 - 我的站点[云](http://yun.9in.info)
 - 我的博客[CHEN](http://9in.info)
+
 ### 本次更新
 - 免签约微信支付程序自检测 根据COOKIE
 - 支付宝判断完善
@@ -17,14 +18,27 @@
 - 每分钟更改为5次的检测（测试不会被ban）
 - 完善检测失效机制
 - 添加手动开启支付开关（检测机制有可能在cookie失效情况下会直接关掉）
-- 添加固定金额支付模式（也可手动输入支付模式【未测试】）
+- 添加固定金额支付模式（也可手动输入支付模式）
+- 改用依赖的形式（以后核心更新只需要```composer update chen-see/chen-pay```）
+- 运行方式的改变不再使用定时任务（更稳定）
+- 同步支付内核更新
+- 更新支付宝双接口轮流切换API达到支付宝防止频繁访问阻止机制
+- 如果单一接口出现阻止则会持续使用另外接口
+- 更新日志保存地址为/storage/logs/chenpay.log
 
 ### 相关截图
 <img src="http://ww1.sinaimg.cn/large/006v0omggy1fvgz36p0ckj30u02kck43.jpg" width="300"/>
 <img src="http://ww1.sinaimg.cn/large/006v0omggy1fvgzmfn25pj30u02xodt6.jpg" width="300"/>
 
 ### 使用步骤:
-#### 1. 设置配置文件
+#### 1. 安装依赖
+```
+composer require chen-see/chen-pay
+# 如有提示按Y
+# 如无法正常安装可执行rm -rf vendor/然后再composer update
+# 如监听时出现异常 yum update nss
+```
+#### 2. 设置配置文件
 在配置文件```/config/.config.php```中的```$System_Config['payment_system']```后插入以下内容:
 ```
 //支付系统设置--------------------------------------------------------------------
@@ -32,24 +46,24 @@
 $System_Config['payment_system']='chenAlipay';
 ```
 
-#### 2. 导入数据
+#### 3. 导入数据
 - 使用一般mysql工具导入sql/config.sql即可（不会影响数据）
 
-#### 3. 获取支付宝COOKIE
+#### 4. 获取支付宝COOKIE
 - 浏览器访问：https://mbillexprod.alipay.com/enterprise/tradeListQuery.htm
 - 登录支付宝账号
 - 浏览器按f12再刷新一下
 - 可以看到tradeListQuery.json
-- 点击它找到Cookie: 后面就是cookie全部复制到后台配置框内
+- 点击header它找到Cookie: 后面就是cookie全部复制到后台配置框内
 
-#### 4. 获取微信COOKIE
+#### 5. 获取微信COOKIE
 - 浏览器访问：https://wx.qq.com（此地址必须设置到后台支付设置里，登录完成后会有所变更）
 - 手机扫码登录微信账号
 - 浏览器按f12再刷新一下
 - 可以看到webwxinit?r=*******
-- 点击它找到Cookie: 后面有cookie了
+- 点击header它找到Cookie: 后面有cookie了
 
-#### 5. 获取微信&支付宝付款码
+#### 6. 获取微信&支付宝付款码
 - 直接到支付点加号
 - 找到收付款
 - 点击二维码收款
@@ -58,18 +72,24 @@ $System_Config['payment_system']='chenAlipay';
 - 访问：https://cli.im/deqr 上传付款码二维码
 - 解析出来的地址复制到后台管理的二维码地址框
 
-#### 6. 添加定时任务
+#### 7. 执行命令
 ```
-# crontab -e
-*/1 * * * * php /你的目录/xcat alipay
-*/1 * * * * php /你的目录/xcat wxpay
+# 前台运行
+# php /你的目录/xcat alipay
+# php /你的目录/xcat wxpay
+# 后台运行
+# nohup php /你的目录/xcat alipay &
+# nohup php /你的目录/xcat wxpay &
+# 日志查看
+# tail /你的目录/storage/logs/chenpay.log
 ```
 
 ### 特别说明:
+- 服务器时间必须要正确的中国时间，需要匹配支付宝微信时间
+- 排队机制修改同一支付类型支持不同支付金额,同一支付金额不同支付类型
 - 出现cookie失效有可能是服务器无法访问相关接口原因导致掉线
 - eamil通知必须要设置其中的一个邮箱
 - 刷新频率为10秒一次
-- 打算弄个xposed hook来实时生成付款码可以解决多个人无法同时支付问题
 
 ### 大概流程
 <img src="http://ww1.sinaimg.cn/large/006v0omggy1fv6sq3h0dfg308s0fnx6s.gif" width="250"/>
