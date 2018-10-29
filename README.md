@@ -10,6 +10,9 @@
 - 我的站点[云](http://yun.9in.info)
 - 我的博客[CHEN](http://9in.info)
 
+### 讨论群
+https://t.me/chenAirport
+
 ### 本次更新
 - 免签约微信支付程序自检测 根据COOKIE
 - 支付宝判断完善
