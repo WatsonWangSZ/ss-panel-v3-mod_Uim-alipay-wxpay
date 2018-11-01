@@ -80,13 +80,16 @@ $System_Config['payment_system']='chenAlipay';
 #### 7. 执行命令
 ```
 # crontab -e
+# 方法一
+* * * * * for((i=1;i<=5;i++));do php /你的目录/xcat wxpay;sleep 10;done
+* * * * * for((i=1;i<=5;i++));do php /你的目录/xcat alipay;sleep 10;done
+# 方法二
 * * * * * php /你的目录/xcat wxpay
 * * * * * sleep 10; php /你的目录/xcat wxpay
 * * * * * sleep 20; php /你的目录/xcat wxpay
 * * * * * sleep 30; php /你的目录/xcat wxpay
 * * * * * sleep 40; php /你的目录/xcat wxpay
 * * * * * sleep 50; php /你的目录/xcat wxpay
-
 * * * * * php /你的目录/xcat alipay
 * * * * * sleep 10; php /你的目录/xcat alipay
 * * * * * sleep 20; php /你的目录/xcat alipay
