@@ -1,3 +1,5 @@
+# 还存在重大Bug尚未解决，请勿使用
+
 ## ss-panel-v3-mod_Uim_PersonalRevision
 ## ss-panel-v3-mod_Uim_个人修订版
 
