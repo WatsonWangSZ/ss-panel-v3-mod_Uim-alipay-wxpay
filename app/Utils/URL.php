@@ -457,18 +457,7 @@ class URL
                     ->orWhere("user_id", "=", 0);
             }
         )->orderBy('priority','DESC')->orderBy('id')->first();
-         /***节点名字后加#偏移值***/
-        $temp = explode("#", $node->name);
-        $offset = 0;
-        if ($temp[1]!=null){
-            $node_name = $temp[0];
-            if (is_numeric($temp[1])) {
-                $offset = $temp[1];
-            }
-        } else {
-            $node_name = $node->name;
-        }
-        /************/
+        $node_name = $node->name;
         if ($relay_rule != null) {
             $node_name .= " - ".$relay_rule->dist_node()->name;
         }
@@ -480,7 +469,7 @@ class URL
             $mu_user->obfs_param = $user->getMuMd5();
             $mu_user->protocol_param = $user->id.":".$user->passwd;
             $user = $mu_user;
-            //$node_name .= " - ".$mu_port." 单端口";
+            $node_name .= " - ".$mu_port." 单端口";
         }
         if($is_ss) {
             if(!URL::SSCanConnect($user)) {
@@ -493,9 +482,8 @@ class URL
             }
             $user = URL::getSSRConnectInfo($user);
         }
-        /***端口偏移***/
-        $return_array['port'] = $user->port+$offset;
-        //$return_array['port'] = $user->port;
+        $return_array['address'] = $node->server;
+        $return_array['port'] = $user->port;
         $return_array['passwd'] = $user->passwd;
         $return_array['method'] = $user->method;
         $return_array['remark'] = $node_name;
@@ -504,9 +492,9 @@ class URL
         $return_array['obfs'] = $user->obfs;
         $return_array['obfs_param'] = $user->obfs_param;
         $return_array['group'] = Config::get('appName');
-        /*if($mu_port != 0) {
+        if($mu_port != 0) {
             $return_array['group'] .= ' - 单端口';
-        }*/
+        }
         return $return_array;
     }
     public static function cloneUser($user) {

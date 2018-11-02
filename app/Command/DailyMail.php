@@ -42,7 +42,7 @@ class DailyMail
                         "user" => $user,"text" => $text,"lastday"=>$lastday
                     ], [
                     ]);
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     echo $e->getMessage();
                 }
                 $text="";
@@ -51,11 +51,11 @@ class DailyMail
         
         $sts = new Analytics();
         
-        Telegram::Send("呀嘿~报告下今天的使用情况！".
+        Telegram::Send("各位老爷少奶奶，我来为大家报告一下系统今天的运行状况哈~".
         PHP_EOL.
-        "有".$sts->getTodayCheckinUser()."位用户签到啦".PHP_EOL.
-        "今天用了".Tools::flowAutoShow($lastday_total)."的流量~".PHP_EOL.
-        "早睡早起身体好！晚安喵~"
+        "今日签到人数:".$sts->getTodayCheckinUser().PHP_EOL.
+        "今日使用总流量:".Tools::flowAutoShow($lastday_total).PHP_EOL.
+        "晚安~"
         );
     }
 
