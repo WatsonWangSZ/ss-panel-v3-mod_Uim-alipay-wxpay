@@ -29,9 +29,6 @@ $System_Config['db_database'] = 'sspanel';			//数据库名
 $System_Config['db_username'] = 'root';				//数据库用户名
 $System_Config['db_password'] = 'sspanel';			//用户名对应的密码
 
-//TelergramBot设置-------------------------------------------------------------------
-
-
 
 //邮件设置--------------------------------------------------------------------------------------------
 $System_Config['mailDriver'] = 'mailgun';	// mailgun or smtp or sendgrid 选择发送邮件的方式
@@ -252,6 +249,8 @@ $System_Config['flag_regex']='/.*?(?=\s)/';		//从站点全名中匹配【国家
 #捐赠
 $System_Config['enable_donate']='false';	//是否显示用户捐赠（所有收入将被公开）
 
+#用户中心&登陆页面js
+$System_Config['background_js']='sakura';		//选填：sakura或normal，具体效果自测。留空为不开启
 
 //节点检测-----------------------------------------------------------------------------------------------
 #GFW检测，请通过crontab进行【开启/关闭】

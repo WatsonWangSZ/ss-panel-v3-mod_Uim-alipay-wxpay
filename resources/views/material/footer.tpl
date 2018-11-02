@@ -13,6 +13,11 @@
 
 	<script src="/theme/material/js/base.min.js"></script>
 	<script src="/theme/material/js/project.min.js"></script>
-	<script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1"></script>
+	{if $config['backgroud_js'] == 'normal'}
+		<script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1"></script>
+	{/if}
+	{if $config['backgroud_js'] == 'sakura'}
+		<script src="/assets/js/yinghua.js"></script>
+	{/if}
 </body>
 </html>
