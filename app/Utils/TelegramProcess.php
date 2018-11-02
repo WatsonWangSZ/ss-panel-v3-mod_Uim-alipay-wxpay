@@ -12,37 +12,6 @@ class TelegramProcess
     {
         if ($user != null) {
             switch ($command) {
-				//1111——————————————————————————————————————————————————————————————————————————
-					case '1111':
-					$Admin = $user->is_admin;
-					if ($Admin != 1) {
-						if (!$user->isAbleToCheckin()) {
-                        $bot->sendMessage($message->getChat()->getId(), "呀呀呀，你今天已经签到了，明天再来找我吧😘", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
-                        break;
-						}
-					}
-					$rand1 = rand(Config::get('ARandMin'), Config::get('ARandMax'));
-					if ($rand1 < 75) {
-						$rand2 = rand(1,4);
-					} else if ($rand1 < 85) {
-						$rand2 = rand(5,7);
-					} else if ($rand1 < 95) {
-						$rand2 = rand(8,10);
-					} else if ($rand1 < 99) {
-						$rand2 = rand(11,12);
-					} else {
-						$rand2 = rand(13,20);
-					}
-					$money = $rand2 * 0.11;
-					$user->money = $user->money + $money;
-					$newMoney = $user->money;
-					$user->last_check_in_time = time();
-					$user->save();
-					$bot->sendMessage($message->getChat()->getId(), "恭喜你参加了双11预热特别签到活动！
-本次签到你获得了 ".$money." CNY！
-账户余额：".$newMoney." CNY", $parseMode = null, $disablePreview = false, $replyToMessageId = $reply_to);
-					break;
-
 				//签到——————————————————————————————————————————————————————————————————————————
                 case 'checkin':
 					$Admin = $user->is_admin;
@@ -234,7 +203,7 @@ Telegram ID ： ".$telegramID."
 
         if ($message->getChat()->getId() > 0) {
             //个人
-            $commands = array("ping", "chat", "checkin", "help", "coupon", "stat", "account", "getInviteNum", "specialcheckin", "pary", "parycancel", "1111");
+            $commands = array("ping", "chat", "checkin", "help", "coupon", "stat", "account", "getInviteNum", "specialcheckin", "pary", "parycancel");
             if(in_array($command, $commands)){
                 $bot->sendChatAction($message->getChat()->getId(), 'typing');
             }
@@ -270,9 +239,6 @@ Telegram ID ： ".$telegramID."
                     TelegramProcess::needbind_method($bot, $message, $command, $user, $message->getMessageId());
                     break;
 				case 'parycancel':
-                    TelegramProcess::needbind_method($bot, $message, $command, $user, $message->getMessageId());
-                    break;
-				case '1111':
                     TelegramProcess::needbind_method($bot, $message, $command, $user, $message->getMessageId());
                     break;
                case 'help':
@@ -387,7 +353,7 @@ Telegram ID ： ".$telegramID."
             if (Config::get('telegram_group_quiet') == 'true') {
                 return;
             }
-            $commands = array("ping", "chat", "checkin", "help", "coupon", "stat","account", "getInviteNum", "specialcheckin", "pary", "parycancel", "1111");
+            $commands = array("ping", "chat", "checkin", "help", "coupon", "stat","account", "getInviteNum", "specialcheckin", "pary", "parycancel");
             if(in_array($command, $commands)){
                 $bot->sendChatAction($message->getChat()->getId(), 'typing');
             }
@@ -429,9 +395,6 @@ Telegram ID ： ".$telegramID."
 				case 'parycancel':
                     TelegramProcess::needbind_method($bot, $message, $command, $user, $message->getMessageId());
                     break;
-				case '1111':
-                    TelegramProcess::needbind_method($bot, $message, $command, $user, $message->getMessageId());
-                    break;
                 case 'help':
                     $help_list_group = "用户命令列表：
 /checkin - 签到（记得日常签到哦）
@@ -458,7 +421,7 @@ Telegram ID ： ".$telegramID."
                         }
                     }
                     if ($message->getNewChatMember() != null && Config::get('enable_welcome_message') == 'true') {
-                        $bot->sendMessage($message->getChat()->getId(), "你好呀 ".$message->getNewChatMember()->getFirstName()."  ".$message->getNewChatMember()->getLastName()."，很高兴认识你哟，先完成进群验证码吧，然后去看看群规~", $parseMode = null, $disablePreview = false);
+                        $bot->sendMessage($message->getChat()->getId(), "你好呀 ".$message->getNewChatMember()->getFirstName()."  ".$message->getNewChatMember()->getLastName()."，很高兴认识你哟。", $parseMode = null, $disablePreview = false);
                     }
             }
         }
@@ -473,7 +436,7 @@ Telegram ID ： ".$telegramID."
             // or initialize with botan.io tracker api key
             // $bot = new \TelegramBot\Api\Client('YOUR_BOT_API_TOKEN', 'YOUR_BOTAN_TRACKER_API_KEY');
 
-            $command_list = array("ping", "chat" , "help", "prpr", "checkin", "coupon", "stat", "account", "getInviteNum", "specialcheckin", "pary", "parycancel", "1111");
+            $command_list = array("ping", "chat" , "help", "prpr", "checkin", "coupon", "stat", "account", "getInviteNum", "specialcheckin", "pary", "parycancel");
             foreach ($command_list as $command) {
                 $bot->command($command, function ($message) use ($bot, $command) {
                     TelegramProcess::telegram_process($bot, $message, $command);
