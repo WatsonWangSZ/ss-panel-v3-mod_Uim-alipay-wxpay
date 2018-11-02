@@ -13,11 +13,11 @@
 
 	<script src="/theme/material/js/base.min.js"></script>
 	<script src="/theme/material/js/project.min.js"></script>
-	{if $config['backgroud_js'] == 'normal'}
-		<script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1"></script>
-	{/if}
-	{if $config['backgroud_js'] == 'sakura'}
-		<script src="/assets/js/yinghua.js"></script>
-	{/if}
+	<!--选择你需要的背景js，并注释掉另一个-->
+	<!--1：原版-->
+	<!--<script type="text/javascript" color="217,113,24" opacity="0.8" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1"></script>-->
+	<!--2：樱花-->
+	<script src="/assets/js/sakura.js"></script>
+
 </body>
 </html>

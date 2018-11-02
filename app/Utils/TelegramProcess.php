@@ -111,6 +111,7 @@ class TelegramProcess
 						if ($user->money >= $cost) {
 							$user->money = $user->money - $cost;
 							$money = rand(Config::get('SMoneyMin'), Config::get('SMoneyMax'));
+							$money = $money / rand(1,10);
 							$user->money = $user->money + $money;
 							 $Admin = $user->is_admin;
 							$user->last_check_in_time = time();
