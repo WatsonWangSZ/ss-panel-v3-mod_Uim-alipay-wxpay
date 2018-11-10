@@ -403,7 +403,6 @@ class AuthController extends BaseController
         $user->auto_reset_bandwidth = Config::get('reg_auto_reset_bandwidth');
         $user->money = 0;
 		$user->pary = 0;
-		$user->credit = 0;
 
         //dumplin：填写邀请人，写入邀请奖励
         $user->ref_by = 0;
