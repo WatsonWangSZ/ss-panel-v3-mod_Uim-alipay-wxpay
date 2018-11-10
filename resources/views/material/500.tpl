@@ -59,7 +59,7 @@
 						<section class="wrapper style5">
                             <div class="inner">
                                 <p>
-									别担心，这是我们的问题。你可以尝试联系站长：TG <a href="//t.me/ImYrS23" target="_blank">@ImYrS</a>
+									别担心，这是我们的问题。你可以尝试联系站长</a>
                                 </p>
 
                                 <nav>
