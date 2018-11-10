@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>登陆成功 - {$config["appName"]} </title>
+    <title>正在跳转用户中心 - {$config["appName"]} </title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta charset="utf-8"/>
@@ -199,8 +199,8 @@
 <body>
 <div class="empty valign" style="height:100vh">
 <div class="centered">
-<p class="empty-title h1">登陆成功</p>
-<p class="empty-title h4">正在跳转{$config["appName"]}用户中心</p>
+<p class="empty-title h1">{$title}</p>
+<p class="empty-title h4">{$message}</p>
 <div class="divider"></div>
 <div class="empty-action">
 </div>
@@ -212,6 +212,6 @@
 </footer>
 </div>
 </div>
-<script>var copyrightNow = (new Date).getFullYear(), textContent = document.querySelector("span[year]"); copyrightSince = 2018, textContent.textContent = copyrightSince === copyrightNow ? copyrightNow : copyrightSince + " - " + copyrightNow;</script>
+<script>var copyrightNow = (new Date).getFullYear(), textContent = document.querySelector("span[year]"); copyrightSince = 2017, textContent.textContent = copyrightSince === copyrightNow ? copyrightNow : copyrightSince + " - " + copyrightNow;</script>
 </body>
 </html>

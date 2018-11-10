@@ -84,7 +84,7 @@ class Job
         system("rm -rf /tmp/ssmodbackup", $ret);
         system("rm /tmp/ssmodbackup.zip", $ret);
 
-        Telegram::Send("主上~~我又双叒叕帮你备份了数据库和配置文件了喵！已经发到您的小心心里了哟💗");
+        Telegram::Send("备份完毕了喵~今天又是安全祥和的一天呢。");
     }
 
     public static function SyncDuoshuo()
@@ -143,7 +143,7 @@ class Job
         Speedtest::where("datetime", "<", time()-86400*3)->delete();
         EmailVerify::where("expire_in", "<", time()-86400*3)->delete();
 		 system("rm ".BASE_PATH."/storage/*.png", $ret);
-        Telegram::Send("报~~~~~主上，昨天的数据库已经清理完毕啦~新的一天我也会乖乖努力维护站点哒o(*￣▽￣*)ブ💗");
+        Telegram::Send("姐姐姐姐，数据库被清理了，感觉身体被掏空了呢~");
 
         //auto reset
         $boughts=Bought::all();
@@ -531,7 +531,7 @@ class Job
                                 }
                             }
                         } else {
-                            $notice_text = "哎..哎哟 ".$node->name." 节点好像出问题了😭我会尽快修复的呜呜呜呜呜";
+                            $notice_text = "喵喵喵~ ".$node->name." 节点掉线了喵~";
                         }
                     }
 
@@ -590,7 +590,7 @@ class Job
 
                             $notice_text = "喵喵喵~ ".$node->name." 节点恢复了喵~域名解析被切换回来了喵~";
                         } else {
-                            $notice_text = "嗷呜~主上~~经过我200%的努力，终于把 ".$node->name." 节点修复好啦^_^ 快奖励我吧💗";
+                            $notice_text = "喵喵喵~ ".$node->name." 节点恢复了喵~";
                         }
                     }
 

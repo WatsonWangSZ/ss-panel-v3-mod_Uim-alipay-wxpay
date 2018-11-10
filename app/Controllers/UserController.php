@@ -19,7 +19,7 @@ use App\Services\Payment;
 use App\Utils;
 use App\Utils\AliPay;
 use App\Utils\Hash;
-use App\Utils\Tools;x 
+use App\Utils\Tools;
 use App\Utils\Radius;
 use App\Utils\Wecenter;
 use App\Models\RadiusBan;
@@ -298,17 +298,9 @@ class UserController extends BaseController
 
             if (Config::get('enable_donate') == 'true') {
                 if ($this->user->is_hide == 1) {
-                    Telegram::Send("一位不愿透露姓名的大老板给我们捐了 " . $codeq->number . " 元呢~真是全人类的榜样！");
+                    Telegram::Send("姐姐姐姐，一位不愿透露姓名的大老爷给我们捐了 " . $codeq->number . " 元呢~");
                 } else {
-                  $num = $codeq->number;
-                  if ($num <=5){
-					Telegram::Send("感谢上苍！ " . $this->user->user_name . " 给我们捐了 " . $codeq->number . " 元，要是能再多一点就好了（小声）");
-                  } else if ($num <=10) {
-                    Telegram::Send("感谢上苍！ " . $this->user->user_name . " 给我们捐了 " . $codeq->number . " 元，终于不会饿死了！");
-                  } else {
-					Telegram::Send("感谢上苍！ " . $this->user->user_name . " 给我们捐了 " . $codeq->number . " 元，太有钱了吧！");
-				  }
-
+                    Telegram::Send("姐姐姐姐，" . $this->user->user_name . " 大老爷给我们捐了 " . $codeq->number . " 元呢~");
                 }
             }
 

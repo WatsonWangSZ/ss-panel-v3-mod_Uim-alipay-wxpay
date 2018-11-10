@@ -15,7 +15,7 @@
 									-->
 									<h1 class="card-heading">
 										<div class="text" style=" text-align:center;">
-											欢迎来到
+											Hello！欢迎来到
 										</div>
 										<div class="text" style=" text-align:center;font-weight: bold;">
 											{$config["appName"]}
@@ -86,7 +86,7 @@
 														<option></option>
 														<option value="1">微信</option>
 														<option value="2">QQ</option>
-														<option value="3">Facebook</option>
+														<!--<option value="3">Facebook</option>-->
 														<option value="4">Telegram</option>
 													</select>
 												</div>
@@ -137,7 +137,7 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
-													<p>注册即代表同意<a href="/tos">服务条款</a>，以及保证所录入信息的真实性，如有不实信息会导致账号被删除。</p>
+													<p>注册即代表同意<a href="/tos">全部服务条款</a>，以及保证所录入信息的真实性，如有不实信息，{$config["appName"]}保留删除帐号的权利。</p>
 												</div>
 											</div>
 										</div>
@@ -145,7 +145,7 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-10 col-md-push-1">
-													<p>{$config["appName"]} 已停止新用户注册，请联系网站管理员</p>
+													<p>{$config["appName"]} 已停止新用户注册</p>
 												</div>
 											</div>
 										</div>
@@ -164,7 +164,7 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-heading">
-										<h2 class="modal-title">注册 TOS</h2>
+										<h2 class="modal-title">部分服务条款</h2>
 									</div>
 									<div class="modal-inner">
 										{include file='reg_tos.tpl'}

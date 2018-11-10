@@ -263,6 +263,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `reg_date` datetime NOT NULL,
   `invite_num` int(8) NOT NULL,
   `money` decimal(12,2) NOT NULL,
+  `credit` decimal(12,2) NOT NULL,
+  `pary` int(2) NOT NULL DEFAULT '0',
   `ref_by` int(11) NOT NULL DEFAULT '0',
   `expire_time` int(11) NOT NULL DEFAULT '0',
   `method` varchar(64) NOT NULL DEFAULT 'rc4-md5',

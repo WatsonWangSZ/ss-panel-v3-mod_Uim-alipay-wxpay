@@ -19,7 +19,6 @@
   <style>
 .divcss5{ position:fixed; bottom:0;}
 </style>
-<!-- background image -->
 <body class="page-brand" style="background-image: url(https://ws4.sinaimg.cn/large/ebaccd5fgy1fvw77m5h5vj212z0k6tqi.jpg);">
 	<header class="header header-transparent header-waterfall ui-header">
 		<ul class="nav nav-list pull-left">

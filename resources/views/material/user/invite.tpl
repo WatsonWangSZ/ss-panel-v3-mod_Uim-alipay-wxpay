@@ -32,6 +32,7 @@
 										<p>对方将获得<code>{$config["invite_get_money"]}</code>元奖励作为初始资金。</p>
 										<p>对方充值时您还会获得对方充值金额的 <code>{$config["code_payback"]} %</code> 的返利。</p>
 										<p class="card-heading">已获得返利：<code>{$paybacks_sum}</code> 元</p>
+                                      <p><font color="green" size="4">当你的返利金额达到<code>50</code>元时，可以联系站长提现。手续费 = 提现金额*5%</font></p>
 									</div>
 
 								</div>
@@ -50,8 +51,10 @@
 										<p class="card-heading">邀请链接</p>
 										<p>剩余可邀请次数：{if $user->invite_num<0}无限{else}<code>{$user->invite_num}</code>{/if}</p>
 										<p>邀请链接请给认识的需要的人，邀请他人注册时，请将以下链接发给被邀请者</p>
-										<p><a>{$config["baseUrl"]}/auth/register?code={$code->code}</a></p>
-										<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请链接</button></p>
+										<!--<p><a>{$config["baseUrl"]}/auth/register?code={$code->code}</a></p>
+										<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="{$config["baseUrl"]}/auth/register?code={$code->code}">点击拷贝邀请链接</button></p>-->
+                              			<p><a>https://aff.69ssr.com/{$code->code}</a></p>
+                              			<p><button class="copy-text btn btn-subscription" type="button" data-clipboard-text="https://aff.69ssr.com/{$code->code}">点击拷贝邀请链接</button></p>
 									</div>
 								</div>
 							</div>

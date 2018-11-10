@@ -222,6 +222,8 @@ class XCat
             $user->plan='A';
             $user->node_speedlimit=0;
             $user->theme=Config::get('theme');
+			$user->pary=0;
+			$user->credit=0;
 
 
 

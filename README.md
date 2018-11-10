@@ -1,9 +1,7 @@
-# 还存在重大Bug尚未解决，请勿使用
+## ss-panel-v3-mod_Uim_Revision
+## ss-panel-v3-mod_Uim_修订版
 
-## ss-panel-v3-mod_Uim_PersonalRevision
-## ss-panel-v3-mod_Uim_个人修订版
-
-**ss-panel-v3-mod_Uim_PersonalRevision**是基于ss-panel-v3-mod_Uim修改部分内容后制作而成，偶尔整合一些大佬的功能。
+**ss-panel-v3-mod_Uim_Revision**是基于ss-panel-v3-mod_Uim修改部分内容后制作而成，偶尔整合一些大佬的功能。
 
 ### 增加/修改内容：
 - **TelegramBot**：管理员无限次签到 | 增加赌博/特殊签到/活动签到功能 | 重制查询流量功能，增加了用户等级信息 | 增加查询账户详情功能 | 语言个性化

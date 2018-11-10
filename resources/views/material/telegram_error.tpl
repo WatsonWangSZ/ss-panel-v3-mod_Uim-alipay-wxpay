@@ -199,8 +199,8 @@
 <body>
 <div class="empty valign" style="height:100vh">
 <div class="centered">
-<p class="empty-title h1">登陆失败</p>
-<p class="empty-title h4">很抱歉带来的不便，请重新试试或者使用数字登陆</p>
+<p class="empty-title h1">{$title}</p>
+<p class="empty-title h4">{$message}</p>
 <div class="divider"></div>
 <div class="empty-action">
 </div>
@@ -212,6 +212,6 @@
 </footer>
 </div>
 </div>
-<script>var copyrightNow = (new Date).getFullYear(), textContent = document.querySelector("span[year]"); copyrightSince = 2018, textContent.textContent = copyrightSince === copyrightNow ? copyrightNow : copyrightSince + " - " + copyrightNow;</script>
+<script>var copyrightNow = (new Date).getFullYear(), textContent = document.querySelector("span[year]"); copyrightSince = 2017, textContent.textContent = copyrightSince === copyrightNow ? copyrightNow : copyrightSince + " - " + copyrightNow;</script>
 </body>
 </html>

@@ -40,7 +40,7 @@ window.onload = function(){
 	$(".type").click(function(){
 		type = $(this).data("pay");
 	});
-type= 'alipay'
+    type= 'alipay'
 	$("#submit").click(function(){
 		var price = parseFloat($("#amount").val());
 		console.log("将要使用"+type+"方法充值"+price+"元");

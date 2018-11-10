@@ -457,7 +457,7 @@ class URL
                     ->orWhere("user_id", "=", 0);
             }
         )->orderBy('priority','DESC')->orderBy('id')->first();
-         /***节点名字后加#偏移值***/
+        /***节点名字后加#偏移值***/
         $temp = explode("#", $node->name);
         $offset = 0;
         if ($temp[1]!=null){
@@ -493,6 +493,7 @@ class URL
             }
             $user = URL::getSSRConnectInfo($user);
         }
+        $return_array['address'] = $node->server;
         /***端口偏移***/
         $return_array['port'] = $user->port+$offset;
         //$return_array['port'] = $user->port;
