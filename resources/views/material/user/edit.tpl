@@ -54,48 +54,44 @@
 							</div>
 						</div>
 
-                      
-                      {if $config['enable_telegram'] == 'true'}
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
-										<p class="card-heading">Telegram 绑定</p>
-										<p>Telegram 添加机器人账号 <a href="https://t.me/{$telegram_bot}">@{$telegram_bot}</a>，拍下下面这张二维码发给它。</p>
+										<p class="card-heading">节点连接密码修改</p>
+										<p>当前连接密码：<code id="ajax-user-passwd">{$user->passwd}</code><button class="kaobei copy-text btn btn-subscription" type="button" data-clipboard-text="{$user->passwd}">点击拷贝</button></p>
 										<div class="form-group form-group-label">
-											<div class="text-center">
-												<div id="telegram-qr"></div>
-												{if $user->telegram_id != 0}当前绑定：<a href="https://t.me/{$user->im_value}">@{$user->im_value}</a>{/if}
-											</div>
+											<label class="floating-label" for="sspwd">新连接密码</label>
+											<input class="form-control" id="sspwd" type="text">
 										</div>
 
 									</div>
 									<div class="card-action">
 										<div class="card-action-btn pull-left">
-											<a class="btn btn-brand-accent btn-flat waves-attach" href="/user/telegram_reset" ><span class="icon">format_color_reset</span>&nbsp;解绑</a>
+											<button class="btn btn-flat waves-attach" id="ss-pwd-update" ><span class="icon">check</span>&nbsp;提交</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						{/if}
                       
+                    
                       
 
 
-						<!--<div class="card margin-bottom-no">
+						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
 										<p class="card-heading">加密方式修改</p>
-										<p>注意：SS/SSD 和 SSR 支持的加密方式有所不同，请根据实际情况来进行选择！</p>
+										<p>注意：SS/SSD/SSR 支持的加密方式有所不同，请根据实际情况来进行选择</p>
 										<p>当前加密方式：<code>{$user->method}</code></p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="method">加密方式</label>
 											<select id="method" class="form-control">
 												{$method_list = $config_service->getSupportParam('method')}
 												{foreach $method_list as $method}
-													<option value="{$method}" {if $user->method == $method}selected="selected"{/if}>[{if URL::CanMethodConnect($method) == 2}SS/SSD{else}SS/SSD/SSR{/if} 可连接] {$method}</option>
+													<option value="{$method}" {if $user->method == $method}selected="selected"{/if}>[{if URL::CanMethodConnect($method) == 2}SS/SSD{else}SS/SSR{/if} 可连接] {$method}</option>
 												{/foreach}
 											</select>
 										</div>
@@ -108,7 +104,7 @@
 									</div>
 								</div>
 							</div>
-						</div>-->
+						</div>  
 
 						<div class="card margin-bottom-no">
 							<div class="card-main">
@@ -163,14 +159,13 @@
 
 
 
-						<!--<div class="card margin-bottom-no">
+						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
 										<p class="card-heading">协议&混淆设置</p>
 										<p>当前协议：<code id="ajax-user-protocol">{$user->protocol}</code></p>
-										<p>注意1：如果需要兼容 SS/SSD 请选择带_compatible的兼容选项！</p>
-										<p>注意2：如果您使用 SS/SSD 此处请直接设置为 origin！</p>
+										<p>注意1：如果需要兼容 SS/SSD 请设置为 origin 或选择带_compatible的兼容选项</p>
 										<p>注意3：auth_chain 系为实验性协议，可能造成不稳定或无法使用，开启前请询问是否支持</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="protocol">协议</label>
@@ -186,8 +181,9 @@
 
 									<div class="card-inner">
 										<p>当前混淆方式：<code id="ajax-user-obfs">{$user->obfs}</code></p>
-										<p>注意1：如果需要兼容 SS/SSD 请选择带_compatible的兼容选项！</p>
-										<p>注意2：SS/SSD 和 SSR 支持的混淆类型有所不同，simple_obfs_* 为 SS/SSD 的混淆方式，其他为 SSR 的混淆方式！</p>
+										<p>注意1：如果需要兼容 SS/SSD 请设置为 plain 或选择带_compatible的兼容选项</p>
+										<p>注意2：SS/SSD 和 SSR 支持的混淆类型有所不同，simple_obfs_* 为 SS/SSD 的混淆方式，其他为 SSR 的混淆方式</p>
+										<p>注意3：如果使用 SS/SSD 作为客户端，请确保自己知道如何下载并使用混淆插件</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="obfs">混淆方式</label>
 											<select id="obfs" class="form-control">
@@ -201,7 +197,6 @@
 
 									<div class="card-inner">
 										<p>当前混淆参数：<code id="ajax-user-obfs-param">{$user->obfs_param}</code></p>
-										<p>注意：如果需要兼容 SS/SSD 请留空！</p>
 										<div class="form-group form-group-label">
 											<label class="floating-label" for="obs-param">在这输入混淆参数</label>
 											<input class="form-control" id="obfs-param" type="text">
@@ -247,35 +242,12 @@
 								</div>
 							</div>
 						</div> 
-</div>-->
+</div>
 					</div>  
 
 
 					<div class="col-lg-6 col-md-6">
 
-                      <div class="card margin-bottom-no">
-							<div class="card-main">
-								<div class="card-inner">
-									<div class="card-inner">
-										<p class="card-heading">节点连接密码修改</p>
-										<p>当前连接密码：<code id="ajax-user-passwd">{$user->passwd}</code><button class="kaobei copy-text btn btn-subscription" type="button" data-clipboard-text="{$user->passwd}">点击拷贝</button></p>
-										<div class="form-group form-group-label">
-											<label class="floating-label" for="sspwd">新连接密码</label>
-											<input class="form-control" id="sspwd" type="text">
-										</div>
-
-									</div>
-									<div class="card-action">
-										<div class="card-action-btn pull-left">
-											<button class="btn btn-flat waves-attach" id="ss-pwd-update" ><span class="icon">check</span>&nbsp;提交</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-                      
-                      
-                      
 						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
@@ -320,7 +292,7 @@
 
 
 
-						<!--<div class="card margin-bottom-no">
+						<div class="card margin-bottom-no">
 							<div class="card-main">
 								<div class="card-inner">
 									<div class="card-inner">
@@ -363,7 +335,7 @@
 									</div>
 								</div>
 							</div>
-						</div>    -->
+						</div>    
 
 						{if $config['port_price']>=0 || $config['port_price_specify']>=0}
 						<div class="card margin-bottom-no">
@@ -429,7 +401,30 @@
 							</div>
 						</div>
 
-						
+						{if $config['enable_telegram'] == 'true'}
+						<div class="card margin-bottom-no">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="card-inner">
+										<p class="card-heading">Telegram 绑定</p>
+										<p>Telegram 添加机器人账号 <a href="https://t.me/{$telegram_bot}">@{$telegram_bot}</a>，拍下下面这张二维码发给它。</p>
+										<div class="form-group form-group-label">
+											<div class="text-center">
+												<div id="telegram-qr"></div>
+												{if $user->telegram_id != 0}当前绑定：<a href="https://t.me/{$user->im_value}">@{$user->im_value}</a>{/if}
+											</div>
+										</div>
+
+									</div>
+									<div class="card-action">
+										<div class="card-action-btn pull-left">
+											<a class="btn btn-brand-accent btn-flat waves-attach" href="/user/telegram_reset" ><span class="icon">format_color_reset</span>&nbsp;解绑</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{/if}
 					</div>
 
 
@@ -637,7 +632,7 @@ $(".copy-text").click(function () {
                     if (data.ret) {
                         $("#result").modal();
 						$("#ajax-user-protocol").html($("#protocol").val());
-						$("ajax-user-obfs").html($("#obfs").val());
+						$("#ajax-user-obfs").html($("#obfs").val());
 						$("#ajax-user-obfs-param").html($("#obfs-param").val());
 						$("#msg").html(data.msg);
                     } else {

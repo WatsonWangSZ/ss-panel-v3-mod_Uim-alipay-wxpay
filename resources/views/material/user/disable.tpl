@@ -15,7 +15,7 @@
 	<main class="content">
 		<div class="content-header ui-content-header">
 			<div class="container">
-				<h1 class="content-heading">您已经被封禁</h1>
+				<h1 class="content-heading">虚空之地</h1>
 			</div>
 		</div>
 		<div class="container">
@@ -28,7 +28,7 @@
 							<div class="card">
 								<div class="card-main">
 									<div class="card-inner">
-										<p>您由于某些原因而被管理员禁用了账户，请联系管理员。TG：<a href="//t.me/ImYrS23">@ImYrS23</a>，QQ：1220126731</p>
+										<p>您由于某些原因而被管理员禁用了账户，请联系管理员。</p>
 									</div>
 								</div>
 							</div>
