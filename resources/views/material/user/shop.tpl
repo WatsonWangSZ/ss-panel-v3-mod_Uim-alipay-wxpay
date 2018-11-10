@@ -23,7 +23,6 @@
 							<div class="card-inner">
 								<p><font color="red" size="4">商品不可叠加，新购商品会覆盖旧商品的效果。</font></p>
 								<p>当前余额：<font color="red" size="4"> {$user->money}</font> CNY</p>
-								<p>双十一积分：<font color="red" size="4"> {$user->credit}</font></p>
 							</div>
 						</div>
 					</div>
