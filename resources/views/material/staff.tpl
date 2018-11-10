@@ -113,7 +113,7 @@
                                             </tr>
                                             <tr>
                                                 <td>本程序的参与人员列表</td>
-                                                <td>此列表为参与到 <a href="https://github.com/NimaQu/ss-panel-v3-mod_Uim_PR">ss-panel-v3-mod_Uim_PR</a> 中的人员，在此表示感谢。</td>
+                                                <td>此列表为参与到 <a href="https://github.com/ChenSee/ss-panel-v3-mod_Uim-alipay-wxpay">ss-panel-v3-mod_Uim_Revision</a> 中的人员，在此表示感谢。</td>
                                             </tr>
 
                                         </tbody>
